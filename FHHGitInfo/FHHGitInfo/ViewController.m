@@ -23,7 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self p_configSubViews];
+//    [self p_configSubViews];
+    NSLog(@"cmdResult:%@", [self executeCommand: @"ping -c 3 siruoxian.iteye.com"]);
 }
     
 - (void)p_configSubViews {
@@ -60,6 +61,37 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSString *)executeCommand: (NSString *)cmd
+
+    {
+        NSString *output = [NSString string];
+
+        FILE *pipe = popen([cmd cStringUsingEncoding: NSASCIIStringEncoding], "r+");
+
+        if (!pipe)
+
+        return @"";
+
+        
+
+        char buf[1024];
+
+        while(fgets(buf, 1024, pipe)) {
+            output = [output stringByAppendingFormat: @"%s", buf];
+
+        }
+
+        
+
+        pclose(pipe);
+
+        return output;
+
+ 
+
+    }
+
 
 
 @end
