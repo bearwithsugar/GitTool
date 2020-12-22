@@ -23,8 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    [self p_configSubViews];
-    NSLog(@"cmdResult:%@", [self executeCommand: @"ping -c 3 siruoxian.iteye.com"]);
+    [self p_configSubViews];
+//    NSLog(@"cmdResult:%@", [self executeCommand: @"ping -c 3 siruoxian.iteye.com"]);
 }
     
 - (void)p_configSubViews {
